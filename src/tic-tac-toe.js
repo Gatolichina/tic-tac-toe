@@ -9,6 +9,7 @@ class TicTacToe {
       }
     }
      this.player=1;
+     this.counter=0;
     }
 
     getCurrentPlayerSymbol() {
@@ -19,7 +20,9 @@ class TicTacToe {
     nextTurn(rowIndex, columnIndex) {
         if(this.matrix[rowIndex][columnIndex]==null){
           this.matrix[rowIndex][columnIndex]=this.player;
+          this.counter+=1;
           this.player=Math.abs((this.player-1));
+          console.log( 'ku'+this.counter);
         }
     }
 
@@ -40,8 +43,10 @@ class TicTacToe {
     }
 
     getFieldValue(rowIndex, colIndex) {
-      return this.matrix[rowIndex][colIndex];
-
+      var tmpVal=this.matrix[rowIndex][colIndex];
+       if(tmpVal==1) return 'x';
+       else if(tmpVal==0) return 'o';
+            else return null;
     }
 }
 
