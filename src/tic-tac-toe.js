@@ -19,7 +19,8 @@ class TicTacToe {
 
     nextTurn(rowIndex, columnIndex) {
         if(this.matrix[rowIndex][columnIndex]==null){
-          this.matrix[rowIndex][columnIndex]=this.player;
+          if (this.player==1)this.matrix[rowIndex][columnIndex]='x';
+          else this.matrix[rowIndex][columnIndex]='o';
           this.counter+=1;
           this.player=Math.abs((this.player-1));
         }
@@ -38,8 +39,8 @@ class TicTacToe {
       var col3=this.matrix[0][2]+this.matrix[1][2]+this.matrix [2][2];
       var cross1=this.matrix[0][0]+this.matrix[1][1]+this.matrix [2][2];
       var cross2=this.matrix[2][0]+this.matrix[1][1]+this.matrix [0][2];
-      if ((line1==0)||(line2==0)||(line3==0)||(col1==0)||(col2==0)||(col3==0)||(cross1==0)||(cross2==0)){return 0;}
-      else if ((line1==3)||(line2==3)||(line3==3)||(col1==3)||(col2==3)||(col3==3)||(cross1==3)||(cross2==3)){return 1;}
+      if ((line1=='ooo')||(line2=='ooo')||(line3=='ooo')||(col1=='ooo')||(col2=='ooo')||(col3=='ooo')||(cross1=='ooo')||(cross2=='ooo'))return 'o';
+      else if ((line1=='xxx')||(line2=='xxx')||(line3=='xxx')||(col1=='xxx')||(col2=='xxx')||(col3=='xxx')||(cross1=='xxx')||(cross2=='xxx')) return 'x';
            else return null;
     }
 
@@ -58,8 +59,8 @@ class TicTacToe {
 
     getFieldValue(rowIndex, colIndex) {
       var tmpVal=this.matrix[rowIndex][colIndex];
-       if(tmpVal==1) return 'x';
-       else if(tmpVal==0) return 'o';
+       if(tmpVal!=null) return tmpVal;
+       //else if(tmpVal==0) return 'o';
             else return null;
     }
 }
